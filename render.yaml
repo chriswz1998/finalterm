@@ -1,0 +1,25 @@
+# Render Blueprint — 在 Render Dashboard 选 "Blueprint" 或手动创建 Web Service 均可
+# 若仓库根目录不是 health-link，请在 Render 里把 Root Directory 设为 health-link
+services:
+  - type: web
+    name: health-link
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: LLM_PROVIDER
+        value: dashscope
+      - key: RAG_ENABLED
+        value: true
+      - key: DASHSCOPE_API_KEY
+        sync: false
+      - key: DASHSCOPE_CHAT_MODEL
+        value: qwen-plus
+      - key: DASHSCOPE_VISION_MODEL
+        value: qwen-vl-plus

@@ -1,0 +1,10 @@
+{
+  "name": "健康翻译层 (Health Link)",
+  "description": "一个把临床数据、可穿戴设备数据、生活方式数据双向翻译的家庭健康工具。把医院的语言翻译给家人，把家人的状态翻译给医生。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "Medical Data Translation",
+    "Health Trend Analysis",
+    "Family Care Coordination"
+  ]
+}

@@ -1,0 +1,14 @@
+services:
+  health-link:
+    build: .
+    container_name: health-link
+    restart: unless-stopped
+    env_file:
+      - .env.local
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3001
+    ports:
+      - "127.0.0.1:3001:3001"
+    # Nginx on host proxies 443 → 127.0.0.1:3001
