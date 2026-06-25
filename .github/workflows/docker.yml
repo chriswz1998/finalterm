@@ -1,0 +1,29 @@
+name: Build and Push Docker Image to Azure
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 拉取最新代码
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. 登录到你的 Azure 容器仓库
+      - name: Login to Azure Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: rhythm2026.azurecr.io
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      # 3. 根据 Dockerfile 打包并推送到云端
+      - name: Build and push image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: rhythm2026.azurecr.io/finalterm:latest

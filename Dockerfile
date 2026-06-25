@@ -25,3 +25,5 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
   CMD wget -qO- http://127.0.0.1:3001/api/health || exit 1
 
 CMD ["npx", "tsx", "server/index.ts"]
+
+
